@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style/styles.css"  rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="icon" href="img/favicon.ico">
+</head>
+<body>
+  <header>
+ <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Logo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav px-2"></ul>
+        </div>
+  </div>
+ </nav>
+</header>
+
+<main>
+ <section class="hero position-relative text-white">
+  <!-- Hero -->
+  <div class="bgOpacity position-absolute top-0 start-0 w-100 h-100"></div>
+
+  <div class="container-fluid h-100 hero-content">
+    <div class="row h-100 align-items-center">
+      <div class="col-12 col-lg-6 px-4 px-lg-5 z-4">
+        <h1 class="fw-bold ">Planinarenje u Srbiji</h1>
+        <p class="lead">Otkrij najlepše planinarske ture</p>
+        <a href="#ture" class="btn btn-success">Pogledaj ture</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Tours -->
+<section id="ture" class="py-5">
+  <div class="container-fluid">
+    <h2 class="text-center mb-5">Naše ture</h2>
+    <div id="filterContainer" class="text-center mb-4"></div>
+  <div class="mountainTours row g-4"></div>
+
+<!--BTN showless/showmore-->
+ <div class="text-center mt-4 d-md-none">
+      <button id="toggleMountains" class="btn btn-success">
+        Još ponuda
+      </button>
+  </div>
+  </div>
+</section>
+<section id="aboutUs" class="py-5">
+  <div class="bg-success py-4">
+    <h2 class="text-center mb-4">O nama</h2>
+    <p class="lead text-center">
+      Mi smo tim strastvenih planinara posvećenih otkrivanju i deljenju najlepših planinarskih tura širom Srbije. Naša misija je da inspirišemo ljude da istraže prirodu, povežu se sa okruženjem i pronađu savršenu turu za svoje avanture.
+      <span id="moreAbout" class="more-about">
+        Bilo da ste iskusni planinar ili tek počinjete, tu smo da vam pomognemo da pronađete idealnu turu koja će vam pružiti nezaboravno iskustvo u prirodi.
+      </span>
+    </p>
+    <div class="text-center">
+      <button id="toggleAbout" class="btn btn-light btn-sm">Prikaži više</button>
+    </div>
+  </div>
+
+
+
+</section>
+<div class="container py-5">
+<form id="myForm" class="col-lg-8 mx-auto">
+
+  <!-- FIRST NAME -->
+  <div class="row mb-3">
+    <label class="col-md-4 col-form-label">First Name*</label>
+    <div class="col-md-8">
+      <input type="text" id="firstName" class="form-control">
+      <div class="error-msg"></div>
+    </div>
+  </div>
+
+  <!-- LAST NAME -->
+  <div class="row mb-3">
+    <label class="col-md-4 col-form-label">Last Name*</label>
+    <div class="col-md-8">
+      <input type="text" id="lastName" class="form-control">
+      <div class="error-msg"></div>
+    </div>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="row mb-3">
+    <label class="col-md-4 col-form-label">Email*</label>
+    <div class="col-md-8">
+      <input type="text" id="email" class="form-control">
+      <div class="error-msg"></div>
+    </div>
+  </div>
+
+  <!-- PASSWORD -->
+  <div class="row mb-3">
+    <label class="col-md-4 col-form-label">Password*</label>
+    <div class="col-md-8">
+      <input type="password" id="password" class="form-control">
+      <div class="error-msg"></div>
+    </div>
+  </div>
+
+  <!-- CONFIRM PASSWORD -->
+  <div class="row mb-3">
+    <label class="col-md-4 col-form-label">Confirm Password*</label>
+    <div class="col-md-8">
+      <input type="password" id="confirmPassword" class="form-control">
+      <div class="error-msg"></div>
+    </div>
+  </div>
+
+  <!-- RADIO EXPERIENCE -->
+  <div class="row mb-3">
+    <label class="col-md-4 col-form-label">Experience*</label>
+    <div class="col-md-8">
+      <input type="radio" name="experience" value="Pocetnik"> Početnik
+      <input type="radio" name="experience" value="Osrednje"> Osrednje
+      <input type="radio" name="experience" value="Iskusan"> Iskusan
+      <div class="error-msg"></div>
+    </div>
+  </div>
+
+  <!-- DROPDOWN MOUNTAINS -->
+  <div class="row mb-3">
+    <label class="col-md-4 col-form-label">Choose Mountain*</label>
+    <div class="col-md-8">
+      <select id="mountainSelect" class="form-select"></select>
+      <div class="error-msg"></div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <button class="btn btn-primary">Submit</button>
+  </div>
+
+  <div id="formMessage" class="text-center mt-3"></div>
+
+</form>
+</div>
+
+    <!-- RIGHT SIDE (DYNAMIC CARD) -->
+    <div class="col-md-6 right-side p-4">
+      <div class="card info-card shadow" style="width: 22rem;">
+        <img id="cardImage" src="https://picsum.photos/400/300?1" class="card-img-top">
+        <div class="card-body text-center">
+          <h5 id="cardTitle" class="card-title">Adventure Awaits</h5>
+          <p id="cardText" class="card-text">
+            Explore the most beautiful mountains and nature landscapes.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</section>
+
+
+
+ 
+
+      
+    
+ 
+ 
+
+
+</main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="style/style.js"></script>
+  
+</body>
+</html>
+
+
+
+
+
+CSS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hero {
+  height: 80vh;
+  background: url("../img/slikaproba.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+
+.bgOpacity {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+
+.tourCard {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  
+  cursor: pointer;
+  height: 100%;
+}
+
+
+
+.tourCard img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+/* smooth expand/collapse for about section */
+#moreAbout {
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+#moreAbout.show {
+  max-height: 200px; /* enough room for the extra sentence */
+  opacity: 1;
+}
+
+.scale1{
+  
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+
+
+  
+}
+
+/* mobile menu text alignment */
+
+  .navbar-nav .nav-link {
+    text-align: right;
+    width: 100%;
+  }
+
+
+
+  .left-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+  }
+
+  .info-card img {
+    height: 250px;
+    object-fit: cover;
+  }
+
+
+    .error-msg {
+    color: red;
+    font-size: 0.85rem;
+  }
+  .success-msg {
+    color: green;
+    font-weight: bold;
+  }
+
+JS
+
+
+
+
+
+// NAVBAR
+var navItems = [
+  { name: "Početna", href: "#" },
+  { name: "Ture", href: "#ture" },
+  { name: "O nama", href: "#aboutUs" },
+  { name: "Prijavite se", href: "#" }
+];
+
+
+
+//slider recenica
+const texts = [
+    "Planinarenje je sloboda",
+    "Otkrij najlepše planine Srbije",
+    "Avantura počinje danas",
+    "Priroda te zove"
+];
+
+let index = 0;
+const sliderText = document.getElementById("sliderText");
+
+function changeText(){
+    sliderText.style.opacity = 0;
+
+    setTimeout(() => {
+        sliderText.textContent = texts[index];
+        sliderText.style.opacity = 1;
+
+        index++;
+
+        if(index >= texts.length){
+            index = 0;
+        }
+    }, 500);
+}
+
+
+
+var mountains = [
+  {
+    mountianName: "Tara",
+    difficulty: "Easy",
+    description: "Laka i pristupačna tura, pogodna za sve uzraste i nivoe kondicije.",
+    image: "img/tara.jpg",
+    visina: "1544m",
+    price: "200e"
+  },
+  {
+    mountianName: "Rtanj",
+    difficulty: "Medium",
+    description: "Srednje teška tura sa prelepim pogledom.",
+    image: "img/rtanj.jpg",
+    visina: "1565m",
+    price: "300e"
+  },
+  {
+    mountianName: "Sar",
+    difficulty: "Hard",
+    description: "Teška tura sa izuzetno prelepim pogledom.",
+    image: "img/sar.jpg",
+    visina: "2651m",
+    price: "500e"
+  },
+  {
+    mountianName: "Kopaonik",
+    difficulty: "Hard",
+    description: "Teška tura sa izuzetno prelepim pogledom.",
+    image: "img/kopaonik.jpg",
+    visina: "2017m",
+    price: "500e"
+  },
+  {
+    mountianName: "Zlatibor",
+    difficulty: "Medium",
+    description: "Srednje teška tura sa prelepim pogledom.",
+    image: "img/zlatibor.jpg",
+    visina: "1496m",
+    price: "400e"
+  },
+  {
+    mountianName: "Stara Planina",
+    difficulty: "Medium",
+    description: "Srednje teška tura sa prelepim pogledom.",
+    image: "img/staraplanina.jpg",
+    visina: "2169m",
+    price: "400e"
+  }
+];
+
+let mountainCopy = mountains.slice();
+let showAll = false;
+const difficulties=[];
+mountainCopy.forEach(mc=>{
+if(!difficulties.includes(mc.difficulty)){
+  difficulties.push(mc.difficulty);
+}
+});
+
+function renderMountains() {
+  const container = document.querySelector(".mountainTours");
+  container.innerHTML = "";
+
+  const onMobile = window.innerWidth < 768;
+
+  // ako je telefon i nije kliknuto "showAll" -> limit 3
+  const limit = (onMobile && !showAll) ? 3 : mountainCopy.length;
+
+  mountainCopy.slice(0, limit).forEach(mc => {
+    const card = document.createElement("div");
+    card.className = "col-12 col-md-4";
+
+    card.innerHTML = `
+      <div class="tourCard d-flex flex-column h-100">
+        <img src="${mc.image}" alt="${mc.mountianName}">
+        <div class="tourInfo d-flex flex-column p-3 flex-grow-1">
+          <h4 class="fw-bold">${mc.mountianName}</h4>
+          <p class="mb-1"><strong>Težina:</strong> ${mc.difficulty}</p>
+          <p class="mb-1"><strong>Visina:</strong> ${mc.visina}</p>
+          <p class="flex-grow-1">${mc.description}</p>
+          <p class="mt-auto fw-bold ">${mc.price}</p>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+    $(".tourCard").hover(
+        function () {
+            $(this).addClass("scale1");
+          },
+          function () {
+            $(this).removeClass("scale1");
+          }
+      );
+
+  const toggleBtn = $("#toggleMountains");
+
+if (onMobile) {
+  if (mountainCopy.length <= 3) {
+    toggleBtn.hide();
+  } else {
+    toggleBtn.show();
+    toggleBtn.text(showAll ? "Prikaži manje" : "Još ponuda");
+  }
+} else {
+  toggleBtn.hide();
+};
+}
+
+
+// Toggle dugme
+$("#toggleMountains").on("click", function () {
+  showAll = !showAll;
+  renderMountains();
+});
+
+// Filter
+$("#filterContainer").append(`<select id="difficultyFilter" class="form-select w-50 mx-auto"><option value="all">Sve težine</option></select>`);
+difficulties.forEach(diff => {
+  $("#difficultyFilter").append(`<option value="${diff}">${diff}</option>`);
+});
+
+$("#difficultyFilter").on("change", function () {
+  const value = $(this).val();
+
+  mountainCopy = value === "all"
+    ? mountains.slice()
+    : mountains.filter(m => m.difficulty === value);
+
+  showAll = false;
+  renderMountains();
+});
+
+// Resize
+$(window).on("resize", function () {
+  renderMountains();
+});
+
+// Initial render
+renderMountains();
+
+// About section toggle
+const aboutBtn = $("#toggleAbout");
+const moreSpan = $("#moreAbout");
+
+aboutBtn.on("click", function() {
+  moreSpan.toggleClass("show");
+  const showing = moreSpan.hasClass("show");
+  aboutBtn.text(showing ? "Prikaži manje" : "Prikaži više");
+});
+
+
+ const content = [
+    {
+      image: "https://picsum.photos/400/300?1",
+      title: "Adventure Awaits",
+      text: "Explore the most beautiful mountains and nature landscapes."
+    },
+    {
+      image: "https://picsum.photos/400/300?2",
+      title: "Climb Higher",
+      text: "Push your limits and conquer new peaks."
+    },
+    {
+      image: "https://picsum.photos/400/300?3",
+      title: "Find Peace",
+      text: "Disconnect from stress and reconnect with nature."
+    }
+  ];
+
+  let x = 0;
+
+  function changeContent() {
+    x = (x + 1) % content.length;
+
+    document.getElementById("cardImage").src = content[x].image;
+    document.getElementById("cardTitle").textContent = content[x].title;
+    document.getElementById("cardText").textContent = content[x].text;
+  }
+
+  setInterval(changeContent, 3000); // menja na 3 sekunde
+
+
+
+
+
+  const select = document.getElementById("mountainSelect");
+select.innerHTML = `<option value="">Choose...</option>`;
+mountains.forEach(m => {
+  select.innerHTML += `<option value="${m.name}">${m.name}</option>`;
+});
+
+// ====== VALIDATION RULES ARRAY ======
+const validationRules = [
+  {
+    id: "firstName",
+    regex: /^[A-Z][a-zA-Z]{1,}$/,
+    message: "Ime mora početi velikim slovom i imati makar 2 slova."
+  },
+  {
+    id: "lastName",
+    regex: /^[A-Z][a-zA-Z]{1,}$/,
+    message: "Prezime mora početi velikim slovom i imati makar 2 slova."
+  },
+  {
+    id: "email",
+    regex: /^[^\s@]+@[^\s@]+\.com$/,
+    message: "Email mora sadržati @ i završavati se sa .com."
+  },
+  {
+    id: "password",
+    regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/,
+    message: "Lozinka mora imati veliko, malo slovo, broj i specijalni karakter."
+  }
+];
+
+// ====== LIVE VALIDATION ======
+validationRules.forEach(rule => {
+  const input = document.getElementById(rule.id);
+  input.addEventListener("blur", () => validateField(input, rule));
+});
+
+function validateField(input, rule) {
+  const errorDiv = input.nextElementSibling;
+  if (!rule.regex.test(input.value.trim())) {
+    input.classList.add("is-invalid");
+    input.classList.remove("is-valid");
+    errorDiv.textContent = rule.message;
+    return false;
+  } else {
+    input.classList.remove("is-invalid");
+    input.classList.add("is-valid");
+    errorDiv.textContent = "";
+    return true;
+  }
+}
+
+// Confirm password
+document.getElementById("confirmPassword").addEventListener("blur", function() {
+  const pass = document.getElementById("password").value;
+  const errorDiv = this.nextElementSibling;
+
+  if (this.value !== pass || this.value === "") {
+    this.classList.add("is-invalid");
+    this.classList.remove("is-valid");
+    errorDiv.textContent = "Lozinke se moraju poklapati.";
+  } else {
+    this.classList.remove("is-invalid");
+    this.classList.add("is-valid");
+    errorDiv.textContent = "";
+  }
+});
+
+// ====== SUBMIT ======
+document.getElementById("myForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let isValid = true;
+
+  validationRules.forEach(rule => {
+    const input = document.getElementById(rule.id);
+    if (!validateField(input, rule)) isValid = false;
+  });
+
+  // confirm password check
+  const confirm = document.getElementById("confirmPassword");
+  if (confirm.value !== document.getElementById("password").value || confirm.value === "") {
+    confirm.classList.add("is-invalid");
+    isValid = false;
+  }
+
+  // radio check
+  const radio = document.querySelector('input[name="experience"]:checked');
+  const radioError = document.querySelector('input[name="experience"]').parentElement.querySelector(".error-msg");
+  if (!radio) {
+    radioError.textContent = "Morate izabrati nivo iskustva.";
+    isValid = false;
+  } else {
+    radioError.textContent = "";
+  }
+
+  // dropdown check
+  if (select.value === "") {
+    select.classList.add("is-invalid");
+    select.nextElementSibling.textContent = "Morate izabrati planinu.";
+    isValid = false;
+  } else {
+    select.classList.remove("is-invalid");
+    select.classList.add("is-valid");
+    select.nextElementSibling.textContent = "";
+  }
+
+  const formMessage = document.getElementById("formMessage");
+
+  if (isValid) {
+    formMessage.innerHTML = `<div class="success-msg">Hvala na prijavi!</div>`;
+  } else {
+    formMessage.innerHTML = `<div class="error-msg">Niste lepo popunili formu.</div>`;
+  }
+
+});
