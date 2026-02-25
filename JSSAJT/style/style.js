@@ -154,9 +154,6 @@ $("#difficultyFilter").on("change", function () {
 });
 
 
-$(window).on("resize", function () {
-  renderMountains();
-});
 
 
 renderMountains();
@@ -362,4 +359,5 @@ document.getElementById("myForm").addEventListener("submit", function(e) {
     formMessage.innerHTML = `<div class="error-msg">Niste lepo popunili formu.</div>`;
   }
 });
+
 
